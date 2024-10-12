@@ -19,26 +19,35 @@ public class EfRepostitoryBase<TName, TEntity, TId> : IRepository<TEntity, TId>
 
     public List<TEntity> GetAll()
     {
-        throw new NotImplementedException();
+        return Name.Set<TEntity>().ToList();
     }
 
     public TEntity? GetById(TId id)
     {
-        throw new NotImplementedException();
+        return Name.Set<TEntity>().Find(id);
     }
 
     public TEntity? Update(TEntity entity)
     {
-        throw new NotImplementedException();
+        entity.UpdatedDate = DateTime.Now;
+        Name.Set<TEntity>().Update(entity);
+        Name.SaveChanges();
+        return entity;
+
     }
 
     public TEntity? Add(TEntity entity)
     {
-        throw new NotImplementedException();
+        entity.CreatedDate = DateTime.Now;
+        Name.Set<TEntity>().Add(entity);
+        return entity;
     }
 
     public TEntity? Remove(TEntity entity)
     {
-        throw new NotImplementedException();
+        Name.Set<TEntity>().Remove(entity);
+        Name.SaveChanges();
+        return entity;
+
     }
 }
