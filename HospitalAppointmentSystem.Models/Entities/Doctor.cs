@@ -14,5 +14,5 @@ public sealed class Doctor : Entity<Guid>
         Cardiology
     }
 
-    public List<string> Patients { get; set; } = new List<string>();
+    public List<string> Patients { get; set; } = new List<string>(); 
 }
