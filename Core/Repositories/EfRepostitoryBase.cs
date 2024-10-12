@@ -17,5 +17,28 @@ public class EfRepostitoryBase<TName, TEntity, TId> : IRepository<TEntity, TId>
         Name = name;
     }
 
-   
+    public List<TEntity> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public TEntity? GetById(TId id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public TEntity? Update(TEntity entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public TEntity? Add(TEntity entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public TEntity? Remove(TEntity entity)
+    {
+        throw new NotImplementedException();
+    }
 }
