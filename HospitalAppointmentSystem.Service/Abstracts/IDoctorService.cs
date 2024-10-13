@@ -10,8 +10,11 @@ public interface IDoctorService
 {
     List<DoctorResponseDto> GetAll();
 
-    DoctorResponseDto GetById(Guid id);
-
     Doctor Add(CreateDoctorRequest create);
 
+    Doctor Delete(Guid id);
+
+    Doctor Update(UpdateDoctorRequest update);
+
+    DoctorResponseDto GetById(Guid id);
 }

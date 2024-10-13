@@ -23,6 +23,13 @@ namespace HospitalAppointmentSystem.Service.Concretes
             _mapper = mapper;
         }
 
+        public List<DoctorResponseDto> GetAll()
+        {
+            List<Doctor> doctors = _doctorRepository.GetAll();
+            List<DoctorResponseDto> doctorResponseDtos = new List<DoctorResponseDto>();
+            return doctorResponseDtos;
+        }
+
         public Doctor Add(CreateDoctorRequest create)
         {
             Doctor doctor = _mapper.Map<Doctor>(create);
@@ -30,15 +37,48 @@ namespace HospitalAppointmentSystem.Service.Concretes
             return createdDoctor;
         }
 
-
-        public List<DoctorResponseDto> GetAll()
+        public Doctor Delete(Guid id)
         {
-            throw new NotImplementedException();
+            Doctor doctor = _doctorRepository.GetById(id);
+
+            if (doctor is null)
+            {
+
+                throw new KeyNotFoundException("Doktor bulunamadı");
+            }
+
+            Doctor deletedDoctor = _doctorRepository.Remove(doctor);
+            return deletedDoctor;
+        }
+
+
+        public Doctor Update(UpdateDoctorRequest update)
+        {
+            Doctor existingDoctor = _doctorRepository.GetById(update.Id);
+
+            if (existingDoctor is null)
+            {
+
+                throw new KeyNotFoundException("Doktor bulunamadı");
+            }
+
+            Doctor updatedDoctor = _doctorRepository.Update(existingDoctor);
+            return updatedDoctor;
+
         }
 
         public DoctorResponseDto GetById(Guid id)
         {
-            throw new NotImplementedException();
+            Doctor doctor = _doctorRepository.GetById(id);
+
+            if (doctor is null)
+            {
+                throw new KeyNotFoundException("Doktor bulunamadı");
+            }
+
+            DoctorResponseDto doctorDto = _mapper.Map<DoctorResponseDto>(doctor);
+            return doctorDto;
         }
+
     }
 }
