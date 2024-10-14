@@ -1,18 +1,14 @@
 ﻿
 using Core.Entities;
+using Core.Enum;
 
 namespace HospitalAppointmentSystem.Models.Entities;
 
-public sealed class Doctor : Entity<Guid>
+public sealed class Doctor : Entity<int>
 {
+    public string Name { get; set; }
 
-    public enum Branch
-    {
-        Orthopedics,
-        Ophthalmology,
-        Dermatology,
-        Cardiology
-    }
+    public BranchEnum Branch { get; set; }
 
-    public List<string> Patients { get; set; } = new List<string>(); 
+    public List<Appointment> Patients { get; set; } = new List<Appointment>(); 
 }

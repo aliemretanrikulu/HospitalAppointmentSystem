@@ -5,33 +5,31 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.Repositories;
 
-public class EfRepostitoryBase<TName, TEntity, TId> : IRepository<TEntity, TId>
+public class EfRepostitoryBase<TContext, TEntity, TId> : IRepository<TEntity, TId>
     where TEntity : Entity<TId>, new()
-    where TName : DbContext
+    where TContext : DbContext
 {
-
-    protected TName Name { get;}
-
-    public EfRepostitoryBase(TName name)
+    protected TContext Context { get; }
+    public EfRepostitoryBase(TContext context)
     {
-        Name = name;
+        Context = context;
     }
 
     public List<TEntity> GetAll()
     {
-        return Name.Set<TEntity>().ToList();
+        return Context.Set<TEntity>().ToList();
     }
 
-    public TEntity? GetById(TId id)
+        public TEntity? GetById(TId id)
     {
-        return Name.Set<TEntity>().Find(id);
+        return Context.Set<TEntity>().Find(id);
     }
 
     public TEntity? Update(TEntity entity)
     {
         entity.UpdatedDate = DateTime.Now;
-        Name.Set<TEntity>().Update(entity);
-        Name.SaveChanges();
+        Context.Set<TEntity>().Update(entity);
+        Context.SaveChanges();
         return entity;
 
     }
@@ -39,14 +37,14 @@ public class EfRepostitoryBase<TName, TEntity, TId> : IRepository<TEntity, TId>
     public TEntity? Add(TEntity entity)
     {
         entity.CreatedDate = DateTime.Now;
-        Name.Set<TEntity>().Add(entity);
+        Context.Set<TEntity>().Add(entity);
         return entity;
     }
 
     public TEntity? Remove(TEntity entity)
     {
-        Name.Set<TEntity>().Remove(entity);
-        Name.SaveChanges();
+        Context.Set<TEntity>().Remove(entity);
+        Context.SaveChanges();
         return entity;
 
     }

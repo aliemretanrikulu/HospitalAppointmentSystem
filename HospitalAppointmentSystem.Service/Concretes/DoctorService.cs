@@ -37,7 +37,7 @@ namespace HospitalAppointmentSystem.Service.Concretes
             return createdDoctor;
         }
 
-        public Doctor Delete(Guid id)
+        public Doctor Delete(int id)
         {
             Doctor doctor = _doctorRepository.GetById(id);
 
@@ -67,7 +67,7 @@ namespace HospitalAppointmentSystem.Service.Concretes
 
         }
 
-        public DoctorResponseDto GetById(Guid id)
+        public DoctorResponseDto GetById(int id)
         {
             Doctor doctor = _doctorRepository.GetById(id);
 
@@ -80,5 +80,9 @@ namespace HospitalAppointmentSystem.Service.Concretes
             return doctorDto;
         }
 
+        public Task<object> GetAllDoctorsAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

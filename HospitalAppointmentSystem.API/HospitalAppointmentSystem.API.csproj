@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HospitalAppointmentSystem.Models\HospitalAppointmentSystem.Models.csproj" />
+    <ProjectReference Include="..\HospitalAppointmentSystem.Service\HospitalAppointmentSystem.Service.csproj" />
   </ItemGroup>
 
 </Project>

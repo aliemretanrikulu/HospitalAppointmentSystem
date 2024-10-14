@@ -16,5 +16,10 @@ namespace HospitalAppointmentSystem.DataAccess.Concretes
         {
 
         }
+
+        public Appointment GetById(int doctorId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

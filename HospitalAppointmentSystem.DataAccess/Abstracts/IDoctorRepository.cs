@@ -5,7 +5,7 @@ using HospitalAppointmentSystem.Models.Entities;
 
 namespace HospitalAppointmentSystem.DataAccess.Abstracts;
 
-public interface IDoctorRepository : IRepository<Doctor, Guid>
+public interface IDoctorRepository : IRepository<Doctor, int>
 {
 
 }

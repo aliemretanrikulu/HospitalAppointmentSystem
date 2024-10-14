@@ -12,9 +12,10 @@ public interface IDoctorService
 
     Doctor Add(CreateDoctorRequest create);
 
-    Doctor Delete(Guid id);
+    Doctor Delete(int id);
 
     Doctor Update(UpdateDoctorRequest update);
 
-    DoctorResponseDto GetById(Guid id);
+    DoctorResponseDto GetById(int id);
+    Task<object> GetAllDoctorsAsync();
 }
