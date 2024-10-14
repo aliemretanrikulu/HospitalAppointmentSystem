@@ -1,12 +1,9 @@
 ﻿namespace Core.Enum;
 
-public class BranchEnum
+public enum BranchEnum
 {
-    public enum Branch
-    {
-        Orthopedics,
-        Ophthalmology,
-        Dermatology,
-        Cardiology
-    }
+    Orthopedics = 1,
+    Ophthalmology = 2,
+    Dermatology = 3,
+    Cardiology = 4
 }

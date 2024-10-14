@@ -4,11 +4,6 @@ using HospitalAppointmentSystem.Models.Dtos.Doctor.Requests;
 using HospitalAppointmentSystem.Models.Dtos.Doctor.Responses;
 using HospitalAppointmentSystem.Models.Entities;
 using HospitalAppointmentSystem.Service.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HospitalAppointmentSystem.Service.Concretes
 {
@@ -80,7 +75,12 @@ namespace HospitalAppointmentSystem.Service.Concretes
             return doctorDto;
         }
 
-        public Task<object> GetAllDoctorsAsync()
+        //public Task<object> GetAllDoctorsAsync()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public Task GetDoctorByIdAsync(int id)
         {
             throw new NotImplementedException();
         }

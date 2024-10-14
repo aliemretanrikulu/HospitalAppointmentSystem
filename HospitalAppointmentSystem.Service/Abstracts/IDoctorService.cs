@@ -17,5 +17,5 @@ public interface IDoctorService
     Doctor Update(UpdateDoctorRequest update);
 
     DoctorResponseDto GetById(int id);
-    Task<object> GetAllDoctorsAsync();
+    Task GetDoctorByIdAsync(int id);
 }

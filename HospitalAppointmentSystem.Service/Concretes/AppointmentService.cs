@@ -5,17 +5,12 @@ using HospitalAppointmentSystem.Models.Dtos.Appointment.Requests;
 using HospitalAppointmentSystem.Models.Dtos.Appointment.Responses;
 using HospitalAppointmentSystem.Models.Entities;
 using HospitalAppointmentSystem.Service.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HospitalAppointmentSystem.Service.Concretes;
 
 public class AppointmentService : IAppointmentService
 {
-    private readonly IAppointmentService _appointmentService;
+   
     private readonly IAppointmentRepository _appointmentRepository;
     private readonly IMapper _mapper;
 
@@ -54,7 +49,7 @@ public class AppointmentService : IAppointmentService
 
     public Appointment Update(UpdateAppointmentRequest update)
     {
-        Appointment existingAppointment = _appointmentRepository.GetById(update.DoctorId);
+        Appointment existingAppointment = _appointmentRepository.GetById(update);
 
         if (existingAppointment is null)
         {
@@ -66,7 +61,7 @@ public class AppointmentService : IAppointmentService
     }
 
 
-    public List<AppointmentResponseDto> GetById(Guid id)
+    public AppointmentResponseDto GetById(Guid id)
     {
         Appointment appointment = _appointmentRepository.GetById(id);
 

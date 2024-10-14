@@ -2,7 +2,7 @@
 namespace HospitalAppointmentSystem.Models.Dtos.Appointment.Responses
 {
     public sealed record AppointmentResponseDto(
-        Guid PatientName,
+        string PatientName,
         DateTime AppointmentDate,
         int DoctorId
         );

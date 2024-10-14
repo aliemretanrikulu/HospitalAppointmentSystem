@@ -1,11 +1,14 @@
 ﻿
 
+using Core.Enum;
+using HospitalAppointmentSystem.Models.Dtos.Appointment.Responses;
+
 namespace HospitalAppointmentSystem.Models.Dtos.Doctor.Responses;
 
 public sealed record DoctorResponseDto(
-    Guid Id,
+    int Id,
     string Name,
-    Enum Branch,
-    List<string> Patients
+    string Branch,
+    List<AppointmentResponseDto> Appointments
     );
 

@@ -10,5 +10,5 @@ public sealed class Doctor : Entity<int>
 
     public BranchEnum Branch { get; set; }
 
-    public List<Appointment> Patients { get; set; } = new List<Appointment>(); 
+    public List<Appointment> Appointments { get; set; }
 }

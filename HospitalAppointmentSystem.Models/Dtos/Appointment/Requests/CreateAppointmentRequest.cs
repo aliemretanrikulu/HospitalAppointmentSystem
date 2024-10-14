@@ -2,4 +2,4 @@
 
 namespace HospitalAppointmentSystem.Models.Dtos.Appointment.Requests;
 
-public sealed record CreateAppointmentRequest(Guid PatientName, DateTime AppointmentDate, int DoctorId);
+public sealed record CreateAppointmentRequest(string PatientName, DateTime AppointmentDate, int DoctorId);

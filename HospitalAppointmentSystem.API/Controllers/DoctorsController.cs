@@ -1,5 +1,5 @@
 ﻿using Core.Enum;
-using HospitalAppointmentSystem.Models.Dtos.Patient.Response;
+using HospitalAppointmentSystem.Models.Dtos.Doctor.Requests;
 using HospitalAppointmentSystem.Models.Entities;
 using HospitalAppointmentSystem.Service.Abstracts;
 using Microsoft.AspNetCore.Http;
@@ -13,19 +13,17 @@ namespace HospitalAppointmentSystem.API.Controllers
     [ApiController]
     public class DoctorsController : ControllerBase
     {
-        private readonly DbContext _context; 
         private readonly IDoctorService _doctorService;
 
-        public DoctorsController(DbContext context, IDoctorService doctorService)
+        public DoctorsController(IDoctorService doctorService)
         {
-            _context = context;
             _doctorService = doctorService;
         }
 
         [HttpGet("getall")]
         public async Task<IActionResult> GetAll()
         {
-            var doctors = await _doctorService.GetAllDoctorsAsync();
+            var doctors =  _doctorService.GetAll();
             return CreateActionResult(doctors);
         }
 
@@ -41,7 +39,17 @@ namespace HospitalAppointmentSystem.API.Controllers
         [HttpGet("getbyid")]
         public async Task<IActionResult> GetById([FromQuery] int id)
         {
-            var doctor = await _context.Doctor.FindAsync(id);
+            var doctor = _doctorService.GetById(id);
+            if (doctor == null)
+            {
+                return NotFound("Doktor bulunamadı");
+            }
+            return Ok(doctor);
+        }
+        [HttpPost("add")]
+        public IActionResult Add([FromQuery] CreateDoctorRequest doctor)
+        {
+            var added = _doctorService.Add(doctor);
             if (doctor == null)
             {
                 return NotFound("Doktor bulunamadı");
