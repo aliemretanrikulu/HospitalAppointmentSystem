@@ -49,7 +49,7 @@ public class AppointmentService : IAppointmentService
 
     public Appointment Update(UpdateAppointmentRequest update)
     {
-        Appointment existingAppointment = _appointmentRepository.GetById(update);
+        Appointment existingAppointment = _appointmentRepository.GetById(update.Id);
 
         if (existingAppointment is null)
         {

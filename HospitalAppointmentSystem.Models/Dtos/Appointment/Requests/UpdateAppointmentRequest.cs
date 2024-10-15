@@ -2,4 +2,4 @@
 
 namespace HospitalAppointmentSystem.Models.Dtos.Appointment.Requests;
 
-public sealed record UpdateAppointmentRequest(int Id , string PatientName, DateTime AppointmentDate, int DoctorId);
+public sealed record UpdateAppointmentRequest(Guid Id , string PatientName, DateTime AppointmentDate, int DoctorId);
